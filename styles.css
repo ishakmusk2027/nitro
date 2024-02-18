@@ -1,0 +1,185 @@
+/* إضافة خلفية متحركة ملونة للصفحة */
+body::before {
+  content: ''; /* عنصر تم إنشاؤه ليملأ الشاشة */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #3498db, #e74c3c, #8e44ad); /* تدرج لوني */
+  mix-blend-mode: multiply; /* مزج الألوان */
+  animation: backgroundMovement 10s infinite linear, colorChange 6s infinite alternate; /* حركة الخلفية وتغيير لون الصفحة */
+}
+
+/* تنسيق الصفحة */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* امتداد الصفحة لتعبئة الشاشة بالكامل */
+  background-image: url('https://i.pinimg.com/originals/02/87/d3/0287d3ba8b3330fca99f69e2001d3168.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  position: relative;
+  animation: glow 3s infinite alternate, backgroundGlow 5s infinite alternate, colorGlow 4s infinite alternate; /* تأثيرات تألق */
+}
+
+/* حركة الخلفية */
+@keyframes backgroundMovement {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* تغيير لون الصفحة */
+@keyframes colorChange {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* تأثير تألق */
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(114, 137, 218, 0.5), 0 0 20px rgba(114, 137, 218, 0.5), 0 0 30px rgba(114, 137, 218, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(114, 137, 218, 0.9), 0 0 40px rgba(114, 137, 218, 0.9), 0 0 60px rgba(114, 137, 218, 0.9);
+  }
+}
+
+/* تأثير تألق لون الصفحة */
+@keyframes backgroundGlow {
+  from {
+    filter: brightness(1);
+  }
+  to {
+    filter: brightness(1.2);
+  }
+}
+
+/* تنسيق عنصر الـ container */
+.container {
+  animation: fadeInUp 1s ease-out;
+}
+
+/* تأثير ظهور */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* تنسيق نموذج الاستمارة */
+form {
+  background: linear-gradient(45deg, rgba(52, 152, 219, 0.8) 0%, rgba(231, 76, 60, 0.8) 25%, rgba(218, 112, 214, 0.8) 50%, rgba(173, 216, 230, 0.8) 75%, rgba(173, 216, 230, 0.8) 100%);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  animation: waterDroplets 2s infinite linear, colorChange 4s infinite alternate; /* حركة قطرات الماء وتغيير لون الصفحة */
+}
+
+/* تنسيق عنصر label */
+label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 24px;
+}
+
+/* تنسيق عنصر input */
+input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #b98bdf;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* تنسيق زر الإرسال */
+button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 24px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.5s ease, color 0.3s ease;
+}
+
+/* تأثير تغيير لون زر الإرسال عند التحويم */
+button:hover {
+  background-color: #4dff82;
+  transform: scale(1.05);
+}
+
+/* تأثير تألق لون رمز الصاروخ في زر الإرسال */
+button::before {
+  content: '\1F680';
+  margin-right: 10px;
+  font-size: 28px;
+  vertical-align: middle;
+  color: #3498db; /* تعيين اللون الابتدائي */
+  animation: colorGlow 4s infinite alternate; /* تطبيق حركة التألق على لون رمز الصاروخ */
+}
+
+/* تأثير تحريك الإيموجي على الاسم */
+#name::before {
+  content: '\1F60E';
+  margin-right: 10px;
+  font-size: 28px;
+  vertical-align: middle;
+  animation: moveEmoji 2s infinite alternate; /* حركة تألق لرمز الإيموجي */
+}
+
+/* تأثير تحريك الإيموجي على الرسالة */
+#message::before {
+  content: '\1F4AC';
+  margin-right: 10px;
+  font-size: 28px;
+  vertical-align: middle;
+  animation: moveEmoji 2s infinite alternate-reverse; /* حركة تألق لرمز الإيموجي بشكل معكوس */
+}
+
+/* حركة تألق لرمز الإيموجي */
+@keyframes moveEmoji {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(10px, 10px);
+  }
+}
